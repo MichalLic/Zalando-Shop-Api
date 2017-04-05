@@ -1,6 +1,13 @@
 header {
   background-color: $color-grey-light;
   padding: 15px 0;
+  @media(max-width: $bp-md) {
+    .rwd-flex-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
 
 .logo-block {
@@ -17,7 +24,12 @@ header {
 }
 
 .category-section {
-  width: 300px;
+  width: 400px;
+
+  @media (max-width: $bp-md)  {
+    width: 300px;
+    padding-top: 30px ;
+  }
 }
 
 .category-option {
