@@ -1,14 +1,19 @@
 header {
-  background-color: $color-grey;
+  background-color: $color-grey-light;
   padding: 15px 0;
 }
 
-.logo-link {
-  display: block;
-  background: url("../images/logo-header.png") no-repeat;
-  background-size: cover;
-  width: 300px;
-  height: 59px;
+.logo-block {
+  display: flex;
+  align-items: center;
+
+  .logo-link {
+    display: block;
+    background: url("../images/logo-header.png") no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 59px;
+  }
 }
 
 .category-section {
@@ -18,7 +23,7 @@ header {
 .category-option {
   width: calc(100% / 3);
   text-align: center;
-  border-right: 2px solid $color-grey-dark;
+  border-right: 2px solid $color-grey;
   &:last-child {
     border-right: none;
   }
@@ -30,7 +35,7 @@ header {
     color: #000;
 
     &:hover {
-      background-color: $color-grey-dark;
+      background-color: $color-grey;
     }
   }
 }

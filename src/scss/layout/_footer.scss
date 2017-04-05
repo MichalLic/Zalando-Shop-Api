@@ -1,0 +1,17 @@
+footer {
+  padding: 15px 0;
+  background-color: $color-grey-light;
+}
+
+.footer-block {
+  flex: 1;
+
+  h4{
+    padding: 10px 0;
+  }
+
+  a {
+    color: $color-grey-dark;
+    padding: 5px 0;
+  }
+}

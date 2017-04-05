@@ -5,6 +5,14 @@
 
 body {
   font-family: sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  min-width: 320px;
+}
+
+main {
+  flex: 1;
 }
 
 .container {
@@ -17,7 +25,11 @@ body {
 .flex-between {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
 }
 
 a {
