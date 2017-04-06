@@ -10,12 +10,12 @@ var Zalando = {
     //function
     getProducts: function () {
         $.ajax({
-            url: 'https://api.zalando.com/categories',
+            url: 'https://api.zalando.com/articles',
             method: 'get',
             dataType: 'JSON',
             success: function (response) {
                 console.log(response);
-                Zalando.drawMustache(response);
+                Zalando.getSingleElement(response);
             },
             error: function () {
                 console.log('upsss')
@@ -23,11 +23,18 @@ var Zalando = {
         });
     },
 
+    getSingleElement: function (data) {
+        $.map(data.content, function (product) {
+            console.log(product);
+            Zalando.drawMustache(product);
+        });
+    },
+
     drawMustache: function (data) {
         var template = $('#template').html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, data);
-        $('.musta').html(rendered);
+        $('.products-section').append(rendered);
     }
 
 

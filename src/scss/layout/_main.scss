@@ -1,0 +1,14 @@
+.products-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .product-item {
+    width: calc(100% / 3);
+
+    @media (max-width: $bp-md) {
+      width: 50%;
+    }
+  }
+
+}

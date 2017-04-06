@@ -38,7 +38,7 @@
 
 <main>
     <div class="container">
-        <div class="musta">
+        <div class="products-section">
 
         </div>
     </div>
@@ -73,8 +73,11 @@
     </div>
 </footer>
 <script id="template" type="x-tmpl-mustache">
-    <p>hello</p>
-    <p>{{content}}</p>
+    <div class="product-item">
+        <p>{{name}}</p>
+        <p>Season: {{season}}</p>
+        <img src="{{media.images.1.smallHdUrl}}"></img>
+    </div>
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
