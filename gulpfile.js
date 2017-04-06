@@ -2,15 +2,15 @@ var PATH = {
     scss: './src/scss/**/*.scss',
     js: './src/js/**/*.js',
     js_vendor: [
-        './node_modules/jquery/dist/jquery.min.js'
+        './node_modules/jquery/dist/jquery.min.js',
+        './node_modules/mustache/mustache.min.js'
     ],
+    fonts_vendor: './node_modules/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',
     css_vendor: [
-        //'./node_modules/bulma/css/bulma.css'
+        './node_modules/font-awesome/css/font-awesome.min.css'
     ],
     DIST: './dist',
-    static: [
-        './src/images/**'
-    ]
+    static: './src/images/**'
 };
 
 //
@@ -73,18 +73,18 @@ gulp.task('js-vendor', function () {
         .pipe(gulp.dest(PATH.DIST + '/js'))
 });
 
-//gulp.task('css-vendor', function () {
-//    return gulp.src(PATH.css_vendor)
-//        .pipe($.concat('vendor.css'))
-//        .pipe(gulp.dest(PATH.DIST + '/css'))
-//        .pipe(browserSync.stream());
-//});
+gulp.task('css-vendor', function () {
+   return gulp.src(PATH.css_vendor)
+       .pipe($.concat('vendor.css'))
+       .pipe(gulp.dest(PATH.DIST + '/css'))
+       .pipe(browserSync.stream());
+});
 
-//gulp.task('fonts-vendor', function () {
-//    return gulp.src(PATH.fonts_vendor)
-//        .pipe(gulp.dest(PATH.DIST + '/fonts'))
-//        .pipe(browserSync.stream());
-//});
+gulp.task('fonts-vendor', function () {
+   return gulp.src(PATH.fonts_vendor)
+       .pipe(gulp.dest(PATH.DIST + '/fonts'))
+       .pipe(browserSync.stream());
+});
 
 gulp.task('copy', function () {
     return gulp.src(PATH.static, {base: 'src'})
@@ -118,4 +118,4 @@ gulp.task('serve', function () {
 });
 
 // Initialization
-gulp.task('default', ['styles', 'copy', 'js', 'js-vendor', 'serve']);
+gulp.task('default', ['styles', 'copy', 'js', 'js-vendor','css-vendor', 'fonts-vendor', 'serve']);

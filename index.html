@@ -4,34 +4,86 @@
     <meta charset="UTF-8">
     <title>Zalando Shop</title>
     <link rel="stylesheet" href="dist/css/style.css"/>
+    <link rel="stylesheet" href="dist/css/vendor.css"/>
 </head>
 <body>
 <header>
-<div class="container flex-between">
-    <div class="logo-block">
-        <!--<img src="dist/images/logo.png" alt="">-->
+    <div class="container rwd-flex-column flex-between">
+        <div class="logo-block">
+            <a href="/" class="logo-link"></a>
+        </div>
+        <div class="category-section">
+            <div class="category-block flex-between">
+                <div class="category-option">
+                    <a href="#" class="category-link" data-gender="male">Men</a>
+                </div>
+                <div class="category-option">
+                    <a href="#" class="category-link" data-gender="female">Women</a>
+                </div>
+                <div class="category-option">
+                    <a href="#" class="category-link" data-ageGroup="kids">Kids</a>
+                </div>
+            </div>
+            <div class="select-option">
+                <select name="select" id="select">
+                    <option value="Category">Category...</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="category-block">
-        <div class="category-option">
-            <a href="#">Men</a>
+</header>
+
+<main>
+    <div class="container">
+        <div class="products-section">
+
         </div>
-        <div class="category-option">
-            <a href="#">Women</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-rwd flex-between">
+        <div class="footer-block flex-column">
+            <h4>About Zalando</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Corporate Website</a>
+            <a href="#">Legal Notice</a>
+            <a href="#">Privacy Policy</a>
         </div>
-        <div class="category-option">
-            <a href="#">Kids</a>
+        <div class="footer-block flex-column">
+            <h4>Hel & Advice</h4>
+            <a href="#">All Help Topics</a>
+            <a href="#">Delivery Methods</a>
+            <a href="#">Payment Methods</a>
+            <a href="#">Buy Gift Card</a>
+            <a href="#">Contact Us</a>
         </div>
-        <div class="select-option">
-            <select name="select" id="select">
-                <option value="Category">Category...</option>
-                <option value="a">a</option>
-                <option value="b">b</option>
-                <option value="c">c</option>
-            </select>
+        <div class="footer-block footer-links">
+            <h4>Find Us on</h4>
+            <div class="icon-list">
+                <a href="https://www.instagram.com/zalando/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://pl-pl.facebook.com/zalando.polska/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/user/ZalandoTV" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a><a href="https://twitter.com/zalando"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
 </div>
 </header>
+</footer>
+<script id="template" type="x-tmpl-mustache">
+    <a href="" class="product-link">
+    <div class="product-item">
+            <img src="{{media.images.0.smallHdUrl}}"></img>
+            <p class="product-name">{{name}}</p>
+            <p class="product-season">Season: {{season}}</p>
+            <p class="product-price">{{units.0.price.formatted}}</p>
+    </div>
+    </a>
+</script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
 </body>
