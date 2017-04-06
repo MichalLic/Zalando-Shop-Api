@@ -67,7 +67,7 @@ var Zalando = {
      * @param data
      */
     drawMustache: function (data) {
-        var template = $('#template').html();
+        var template = $('#products').html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, data);
         Zalando.$PRODUCT_SECTION.append(rendered);
