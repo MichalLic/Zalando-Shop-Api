@@ -74,9 +74,11 @@
 </footer>
 <script id="template" type="x-tmpl-mustache">
     <div class="product-item">
-        <p>{{name}}</p>
-        <p>Season: {{season}}</p>
-        <img src="{{media.images.1.smallHdUrl}}"></img>
+        <a href="#">
+            <img src="{{media.images.0.smallHdUrl}}"></img>
+            <p class="product-name">{{name}}</p>
+            <p class="product-season">Season: {{season}}</p>
+        </a>
     </div>
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>

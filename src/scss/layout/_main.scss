@@ -1,14 +1,44 @@
 .products-section {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  padding: 40px 0;
+}
 
-  .product-item {
-    width: calc(100% / 3);
+.product-item {
+  display: flex;
+  padding: 20px 0;
+  flex-direction: column;
+  width: percentage(1/3);
 
-    @media (max-width: $bp-md) {
-      width: 50%;
-    }
+  @media screen and (max-width: $bp-lg) {
+    width: calc(50% - 3px);
+    margin: 0;
   }
 
+  @media screen and (max-width: $bp-md) {
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    transition: .3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  p {
+    color: $color-black;
+    padding: 5px 0;
+    text-transform: lowercase;
+    text-align: center;
+
+    &.product-name {
+      font-weight: 600;
+      flex: 1 0 auto;
+    }
+  }
 }
