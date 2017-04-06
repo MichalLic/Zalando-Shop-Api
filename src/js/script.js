@@ -4,7 +4,7 @@ var Zalando = {
 
     //init
     init: function () {
-    Zalando.getProducts();
+        Zalando.getProducts();
 
     },
     //function
@@ -24,16 +24,15 @@ var Zalando = {
     },
 
     drawMustache: function (data) {
-            var template = $('#template').html();
-            Mustache.parse(template);
-            var rendered = Mustache.render(template, data);
-            $('.musta').html(rendered);
+        var template = $('#template').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, data);
+        $('.musta').html(rendered);
     }
-
 
 
 };
 
 $(document).ready(function () {
-   Zalando.init();
+    Zalando.init();
 });

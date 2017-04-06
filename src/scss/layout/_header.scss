@@ -26,9 +26,9 @@ header {
 .category-section {
   width: 400px;
 
-  @media (max-width: $bp-md)  {
+  @media (max-width: $bp-md) {
     width: 300px;
-    padding-top: 30px ;
+    padding-top: 30px;
   }
 }
 
