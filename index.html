@@ -73,13 +73,14 @@
     </div>
 </footer>
 <script id="template" type="x-tmpl-mustache">
+    <a href="">
     <div class="product-item">
-        <a href="#">
             <img src="{{media.images.0.smallHdUrl}}"></img>
             <p class="product-name">{{name}}</p>
             <p class="product-season">Season: {{season}}</p>
-        </a>
+            <!--<p class="product-price">{{units.0.price.formatted}}</p>-->
     </div>
+    </a>
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
