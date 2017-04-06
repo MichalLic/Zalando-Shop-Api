@@ -15,13 +15,13 @@
         <div class="category-section">
             <div class="category-block flex-between">
                 <div class="category-option">
-                    <a href="#">Men</a>
+                    <a href="#" class="category-link" data-gender="male">Men</a>
                 </div>
                 <div class="category-option">
-                    <a href="#">Women</a>
+                    <a href="#" class="category-link" data-gender="female">Women</a>
                 </div>
                 <div class="category-option">
-                    <a href="#">Kids</a>
+                    <a href="#" class="category-link" data-ageGroup="kids">Kids</a>
                 </div>
             </div>
             <div class="select-option">
@@ -73,12 +73,12 @@
     </div>
 </footer>
 <script id="template" type="x-tmpl-mustache">
-    <a href="">
+    <a href="" class="product-link">
     <div class="product-item">
             <img src="{{media.images.0.smallHdUrl}}"></img>
             <p class="product-name">{{name}}</p>
             <p class="product-season">Season: {{season}}</p>
-            <!--<p class="product-price">{{units.0.price.formatted}}</p>-->
+            <p class="product-price">{{units.0.price.formatted}}</p>
     </div>
     </a>
 </script>
