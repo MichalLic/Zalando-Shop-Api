@@ -5,7 +5,6 @@ var Zalando = {
     //init
     init: function () {
         Zalando.getProducts();
-
     },
     //function
     getProducts: function () {
@@ -25,7 +24,6 @@ var Zalando = {
 
     getSingleElement: function (data) {
         $.map(data.content, function (product) {
-            console.log(product);
             Zalando.drawMustache(product);
         });
     },
