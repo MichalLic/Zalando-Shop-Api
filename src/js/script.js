@@ -1,13 +1,19 @@
 var Zalando = {
     //variables
-    URL: 'https://api.zalando.com/articles',
+    URL: 'https://api.zalando.com/articles/',
+    $PRODUCTS: $('#products'),
     $CATEGORY_LINK: $('.category-link'),
-    $PRODUCT_SECTION: $('.products-section'),
+    $PRODUCTS_SECTION: $('.products-section'),
+    PRODUCT_DETAIL: 'product-detail',
 
     //init
     init: function () {
         Zalando.getProducts(false);
         Zalando.onInitTrueFunction(Zalando.$CATEGORY_LINK);
+    },
+    initDetail: function () {
+        var id = Zalando.getProductId();
+        Zalando.getProductDetail(id);
     },
 
     //function
@@ -23,6 +29,7 @@ var Zalando = {
             method: 'get',
             dataType: 'JSON',
             success: function (response) {
+                console.log(response);
                 $('.product-link').remove();
                 Zalando.getSingleElement(response);
             },
@@ -58,7 +65,7 @@ var Zalando = {
      */
     getSingleElement: function (data) {
         $.map(data.content, function (product) {
-            Zalando.drawMustache(product);
+            Zalando.renderedMustache(product, Zalando.$PRODUCTS, Zalando.$PRODUCTS_SECTION)
         });
     },
 
@@ -66,14 +73,53 @@ var Zalando = {
      * draw products on page content by mustache
      * @param data
      */
-    drawMustache: function (data) {
-        var template = $('#products').html();
+    renderedMustache: function (data, addedElement, elementPlace) {
+        var template = addedElement.html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, data);
-        Zalando.$PRODUCT_SECTION.append(rendered);
+        elementPlace.append(rendered);
+    },
+
+
+    //functions to subpage
+    /**
+     * get product id by window.location.hash method
+     * @returns {*}
+     */
+    getProductId: function () {
+        var hash = window.location.hash;
+        var id = hash.split('#');
+        return id[1];
+    },
+
+    /**
+     * draw product details
+     * @param data
+     */
+    renderedMustacheProduct: function (data) {
+        var template = $('#product-detail').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, data);
+        $('.product-detail').html(rendered);
+    },
+
+    /**
+     * get products from proper url
+     * @param isFilter
+     * @param endpoint
+     */
+    getProductDetail: function (id) {
+        $.ajax({
+            url: Zalando.URL + id,
+            method: 'get',
+            dataType: 'JSON',
+            success: function (response) {
+                    console.log(response);
+                    Zalando.renderedMustacheProduct(response)
+            },
+            error: function () {
+                alert ("Error getting data");
+            }
+        });
     }
 };
-
-$(document).ready(function () {
-    Zalando.init();
-});
