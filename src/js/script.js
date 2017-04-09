@@ -14,6 +14,7 @@ var Zalando = {
     initDetail: function () {
         var id = Zalando.getProductId();
         Zalando.getProductDetail(id);
+        Zalando.owlCarousel();
     },
 
     //function
@@ -121,5 +122,21 @@ var Zalando = {
                 alert ("Error getting data");
             }
         });
+    },
+
+    owlCarousel: function () {
+        $('.owl-product').owlCarousel({
+            items: 1,
+            autoPlay: true,
+            dots: true,
+            loop: true,
+            mouseDrag: false,
+            nav: true,
+            smartSpeed: 1000,
+            autoPlayHoverPause: true,
+            navText:['kkgkg','kakaka']
+        });
     }
+
+
 };

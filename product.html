@@ -55,10 +55,11 @@
 </footer>
 <script id="product-detail" type="x-tmpl-mustache">
         <p class="product-name">{{name}}</p>
-        <div class="product-img">
-            <img src="{{media.images.0.smallHdUrl}}"></img>
+        <div id="owl-product" class="owl-carousel owl-theme owl-loaded">
+            <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
+            <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
+            <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
         </div>
-
         <div class="description">
         <div class="size">
             <span>Size</span>
