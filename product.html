@@ -54,11 +54,26 @@
     </div>
 </footer>
 <script id="product-detail" type="x-tmpl-mustache">
-        <div class="product-item">
+        <p class="product-name">{{name}}</p>
+        <div class="product-img">
             <img src="{{media.images.0.smallHdUrl}}"></img>
-            <p class="product-name">{{name}}</p>
-            <p class="product-season">Season: {{season}}</p>
-            <p class="product-price">{{units.0.price.formatted}}</p>
+        </div>
+
+        <div class="description">
+        <div class="size">
+            <span>Size</span>
+            <span>{{units.0.size}}</span>
+            <span>{{units.1.size}}</span>
+            <span>{{units.2.size}}</span>
+            <span>{{units.3.size}}</span>
+            <span>{{units.4.size}}</span>
+        </div>
+            <span><b>Price</b> {{units.0.price.formatted}}</span>
+            <span><b>Season</b> {{season}}</span>
+            <span><b>Total length</b> {{attributes.2.values.0}}</span>
+            <span><b>Material</b> {{attributes.1.values.0}}</span>
+            <span><b>Type of material</b> {{attributes.7.values.0}}</span>
+            <span><b>Pattern</b> {{attributes.9.values.0}}</span>
         </div>
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
