@@ -14,7 +14,6 @@ var Zalando = {
     initDetail: function () {
         var id = Zalando.getProductId();
         Zalando.getProductDetail(id);
-        Zalando.owlCarousel();
     },
 
     //function
@@ -104,6 +103,13 @@ var Zalando = {
         $('.product-detail').html(rendered);
     },
 
+    renderedMustacheOwlCarousel: function (data) {
+        var template = $('#owl-carousel').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, data);
+        $('#owl-product').append(rendered);
+    },
+
     /**
      * get products from proper url
      * @param isFilter
@@ -115,8 +121,10 @@ var Zalando = {
             method: 'get',
             dataType: 'JSON',
             success: function (response) {
-                    console.log(response);
-                    Zalando.renderedMustacheProduct(response)
+                console.log(response);
+                Zalando.renderedMustacheProduct(response);
+                Zalando.renderedMustacheOwlCarousel(response);
+                Zalando.owlCarousel();
             },
             error: function () {
                 alert ("Error getting data");
@@ -125,11 +133,14 @@ var Zalando = {
     },
 
     owlCarousel: function () {
-        $('.owl-product').owlCarousel({
+        $('.owl-carousel').owlCarousel({
             items: 1,
+            singleItem: true,
             autoPlay: true,
+            autoPlayTimeout: 1000,
             dots: true,
             loop: true,
+            margin: 10,
             mouseDrag: false,
             nav: true,
             smartSpeed: 1000,

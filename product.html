@@ -16,8 +16,9 @@
 </header>
 
 <main>
-    <div class="container">
+    <div class="container flex-between">
         <div class="product-detail"></div>
+        <div id="owl-product" class="owl-carousel owl-theme owl-loaded"></div>
     </div>
 </main>
 
@@ -54,13 +55,8 @@
     </div>
 </footer>
 <script id="product-detail" type="x-tmpl-mustache">
-        <p class="product-name">{{name}}</p>
-        <div id="owl-product" class="owl-carousel owl-theme owl-loaded">
-            <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
-            <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
-            <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
-        </div>
         <div class="description">
+        <p class="product-name">{{name}}</p>
         <div class="size">
             <span>Size</span>
             <span>{{units.0.size}}</span>
@@ -76,6 +72,12 @@
             <span><b>Type of material</b> {{attributes.7.values.0}}</span>
             <span><b>Pattern</b> {{attributes.9.values.0}}</span>
         </div>
+</script>
+<script id="owl-carousel" type="x-tmpl-mustache">
+    <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
+    <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
+    <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
+    <div class="owl-item"><img src="{{media.images.3.smallHdUrl}}"></img></div>
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
