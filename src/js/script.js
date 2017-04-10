@@ -11,7 +11,7 @@ var Zalando = {
         Zalando.getProducts(false);
         Zalando.onInitTrueFunction(Zalando.$CATEGORY_LINK);
     },
-    initDetail: function () {
+    initSubpageDetail: function () {
         var id = Zalando.getProductId();
         Zalando.getProductDetail(id);
     },
@@ -135,17 +135,16 @@ var Zalando = {
     owlCarousel: function () {
         $('.owl-carousel').owlCarousel({
             items: 1,
-            singleItem: true,
-            autoPlay: true,
-            autoPlayTimeout: 1000,
-            dots: true,
+            autoplay: true,
+            dots: false,
             loop: true,
             margin: 10,
-            mouseDrag: false,
+            mouseDrag: true,
             nav: true,
             smartSpeed: 1000,
             autoPlayHoverPause: true,
-            navText:['kkgkg','kakaka']
+            navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+                '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });
     }
 
