@@ -29,6 +29,9 @@ var Zalando = {
             url: Zalando.URL + filters,
             method: 'get',
             dataType: 'JSON',
+            headers: {
+                'Accept-Language': 'en'
+            },
             success: function (response) {
                 console.log(response);
                 $('.product-link').remove();
@@ -122,11 +125,15 @@ var Zalando = {
             url: Zalando.URL + id,
             method: 'get',
             dataType: 'JSON',
+            headers: {
+                'Accept-Language': 'en'
+            },
             success: function (response) {
                 console.log(response);
                 Zalando.renderedMustacheProduct(response);
                 Zalando.renderedMustacheOwlCarousel(response);
                 Zalando.owlCarousel();
+                Zalando.owlRefresh();
             },
             error: function () {
                 alert ("Error getting data");
@@ -149,6 +156,10 @@ var Zalando = {
             navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>',
                 '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });
+    },
+
+    owlRefresh: function (){
+        $('.owl-carousel').trigger('refresh.owl.carousel');
     },
     
     getPreviouslyPage: function (btn) {
