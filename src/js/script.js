@@ -14,6 +14,7 @@ var Zalando = {
     initSubpageDetail: function () {
         var id = Zalando.getProductId();
         Zalando.getProductDetail(id);
+        Zalando.getPreviouslyPage($('.btn-prev'));
     },
 
     //function
@@ -82,6 +83,7 @@ var Zalando = {
 
 
     //functions to subpage
+    
     /**
      * get product id by window.location.hash method
      * @returns {*}
@@ -135,7 +137,7 @@ var Zalando = {
     owlCarousel: function () {
         $('.owl-carousel').owlCarousel({
             items: 1,
-            singleItem: 1,
+            singleItem: true,
             autoplay: true,
             autoplayHoverPause: true,
             dots: false,
@@ -144,10 +146,15 @@ var Zalando = {
             mouseDrag: true,
             nav: true,
             smartSpeed: 1000,
-            autoPlayHoverPause: true,
             navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>',
                 '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });
+    },
+    
+    getPreviouslyPage: function (btn) {
+        btn.on('click', function () {
+            window.history.back();
+        })
     }
 
 
