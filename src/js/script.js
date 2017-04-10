@@ -135,7 +135,9 @@ var Zalando = {
     owlCarousel: function () {
         $('.owl-carousel').owlCarousel({
             items: 1,
+            singleItem: 1,
             autoplay: true,
+            autoplayHoverPause: true,
             dots: false,
             loop: true,
             margin: 10,

@@ -1,3 +1,7 @@
+main{
+  display: flex;
+  align-items: center;
+}
 .products-section {
   display: flex;
   flex-wrap: wrap;
@@ -25,9 +29,6 @@
   padding: 20px 0;
   flex-direction: column;
 
-
-
-
   img {
     max-width: 100%;
     display: block;
@@ -38,6 +39,7 @@
       transform: scale(1.1);
     }
   }
+
   p {
     color: $color-black;
     padding: 5px 0;
@@ -48,6 +50,7 @@
       font-weight: 600;
       flex: 1 0 auto;
     }
+
     &.product-price {
       font-weight: 600;
     }
