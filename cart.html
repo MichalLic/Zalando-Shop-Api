@@ -19,10 +19,8 @@
 </header>
 
 <main>
-
-    <div class="container flex-between flex-wrap">
-        <div id="owl-product" class="owl-carousel owl-theme owl-loaded"></div>
-        <div class="product-detail"></div>
+    <div class="container ">
+        <div class="cart-section"></div>
     </div>
 </main>
 
@@ -58,40 +56,18 @@
         </div>
     </div>
 </footer>
-<script id="product-detail" type="x-tmpl-mustache">
-        <div class="description">
-        <p class="product-name">{{name}}</p>
-        <div class="size">
-            <span><b>Size</b></span>
-            <span>{{units.0.size}}</span>
-            <span>{{units.1.size}}</span>
-            <span>{{units.2.size}}</span>
-            <span>{{units.3.size}}</span>
-            <span>{{units.4.size}}</span>
+<script id="cart-detail" type="x-tmpl-mustache">
+    <div class="cart-product-detail">
+        <span>{{name}}</span>
+        <span>{{units.0.price.formatted}}</span>
+        <span><img src="{{media.images.0.thumbnailHdUrl}}"></img></span>
         </div>
-            <span><b>Price</b> {{units.0.price.formatted}}</span>
-            <span><b>Season</b> {{season}}</span>
-            <span><b>Total length</b> {{attributes.2.values.0}}</span>
-            <span><b>Material</b> {{attributes.1.values.0}}</span>
-            <span><b>Type of material</b> {{attributes.7.values.0}}</span>
-            <span><b>Pattern</b> {{attributes.9.values.0}}</span>
-        </div>
-        <div class="btn-cart">
-            <a href="cart.html">Add to cart</a>
-        </div>
-</script>
-<script id="owl-carousel" type="x-tmpl-mustache">
-    <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
-    <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
-    <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
-    <div class="owl-item"><img src="{{media.images.3.smallHdUrl}}"></img></div>
-
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
 <script>
     $(document).ready(function () {
-        Zalando.initSubpageDetail();
+        Zalando.initSubpageCart();
     });
 </script>
 </body>

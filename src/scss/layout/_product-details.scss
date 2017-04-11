@@ -1,6 +1,7 @@
 
 .product-detail {
   display: flex;
+  position: relative;
 }
 
 .product-name {
@@ -63,18 +64,5 @@
       background: none;
       font-weight: 600;
     }
-  }
-}
-
-.btn-prev {
-  cursor: pointer;
-  position: absolute;
-  top: 100px;
-  background-color: $color-grey-light;
-  padding: 2px 30px;
-  font-size: 25px;
-
-  @media (max-width: $bp-md) {
-    left: 15px;
   }
 }
