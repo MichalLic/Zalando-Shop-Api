@@ -3,7 +3,8 @@ var PATH = {
     js: './src/js/**/*.js',
     js_vendor: [
         './node_modules/jquery/dist/jquery.min.js',
-        './node_modules/mustache/mustache.min.js'
+        './node_modules/mustache/mustache.min.js',
+        './src/js-vendor/owl.carousel.min.js'
     ],
     fonts_vendor: './node_modules/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',
     css_vendor: [

@@ -73,7 +73,7 @@
     </div>
 </footer>
 <script id="products" type="x-tmpl-mustache">
-    <a href="" class="product-link">
+    <a href="product.html#{{id}}" data-id='{{id}}' class="product-link">
         <div class="product-item">
             <img src="{{media.images.0.smallHdUrl}}"></img>
             <p class="product-name">{{name}}</p>
@@ -84,5 +84,10 @@
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
+<script>
+    $(document).ready(function () {
+        Zalando.init();
+    });
+</script>
 </body>
 </html>

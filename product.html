@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Zalando Shop</title>
+    <link rel="stylesheet" href="dist/css/style.css"/>
+    <link rel="stylesheet" href="dist/css/vendor.css"/>
+</head>
+<body>
+<header>
+    <div class="container rwd-flex-column flex-between">
+        <div class="logo-block">
+            <a href="/" class="logo-link"></a>
+        </div>
+        <div class="btn-prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <div class="container flex-between flex-wrap">
+        <div id="owl-product" class="owl-carousel owl-theme owl-loaded"></div>
+        <div class="product-detail"></div>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-rwd flex-between">
+        <div class="footer-block flex-column">
+            <h4>About Zalando</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Corporate Website</a>
+            <a href="#">Legal Notice</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-block flex-column">
+            <h4>Hel & Advice</h4>
+            <a href="#">All Help Topics</a>
+            <a href="#">Delivery Methods</a>
+            <a href="#">Payment Methods</a>
+            <a href="#">Buy Gift Card</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-block footer-links">
+            <h4>Find Us on</h4>
+            <div class="icon-list">
+                <a href="https://www.instagram.com/zalando/" target="_blank"><i class="fa fa-instagram"
+                                                                                aria-hidden="true"></i></a>
+                <a href="https://pl-pl.facebook.com/zalando.polska/" target="_blank"><i class="fa fa-facebook-square"
+                                                                                        aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/user/ZalandoTV" target="_blank"><i class="fa fa-youtube-square"
+                                                                                    aria-hidden="true"></i></a><a
+                    href="https://twitter.com/zalando"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script id="product-detail" type="x-tmpl-mustache">
+        <div class="description">
+        <p class="product-name">{{name}}</p>
+        <div class="size">
+            <span><b>Size</b></span>
+            <span>{{units.0.size}}</span>
+            <span>{{units.1.size}}</span>
+            <span>{{units.2.size}}</span>
+            <span>{{units.3.size}}</span>
+            <span>{{units.4.size}}</span>
+        </div>
+            <span><b>Price</b> {{units.0.price.formatted}}</span>
+            <span><b>Season</b> {{season}}</span>
+            <span><b>Total length</b> {{attributes.2.values.0}}</span>
+            <span><b>Material</b> {{attributes.1.values.0}}</span>
+            <span><b>Type of material</b> {{attributes.7.values.0}}</span>
+            <span><b>Pattern</b> {{attributes.9.values.0}}</span>
+        </div>
+</script>
+<script id="owl-carousel" type="x-tmpl-mustache">
+    <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
+    <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
+    <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
+    <div class="owl-item"><img src="{{media.images.3.smallHdUrl}}"></img></div>
+</script>
+<script type="text/javascript" src="dist/js/vendor.js"></script>
+<script type="text/javascript" src="dist/js/app.js"></script>
+<script>
+    $(document).ready(function () {
+        Zalando.initSubpageDetail();
+    });
+</script>
+</body>
+</html>

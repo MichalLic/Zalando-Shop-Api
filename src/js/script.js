@@ -1,13 +1,20 @@
 var Zalando = {
     //variables
-    URL: 'https://api.zalando.com/articles',
+    URL: 'https://api.zalando.com/articles/',
+    $PRODUCTS: $('#products'),
     $CATEGORY_LINK: $('.category-link'),
-    $PRODUCT_SECTION: $('.products-section'),
+    $PRODUCTS_SECTION: $('.products-section'),
+    PRODUCT_DETAIL: 'product-detail',
 
     //init
     init: function () {
         Zalando.getProducts(false);
         Zalando.onInitTrueFunction(Zalando.$CATEGORY_LINK);
+    },
+    initSubpageDetail: function () {
+        var id = Zalando.getProductId();
+        Zalando.getProductDetail(id);
+        Zalando.getPreviouslyPage($('.btn-prev'));
     },
 
     //function
@@ -22,7 +29,11 @@ var Zalando = {
             url: Zalando.URL + filters,
             method: 'get',
             dataType: 'JSON',
+            headers: {
+                'Accept-Language': 'en'
+            },
             success: function (response) {
+                console.log(response);
                 $('.product-link').remove();
                 Zalando.getSingleElement(response);
             },
@@ -58,7 +69,7 @@ var Zalando = {
      */
     getSingleElement: function (data) {
         $.map(data.content, function (product) {
-            Zalando.drawMustache(product);
+            Zalando.renderedMustache(product, Zalando.$PRODUCTS, Zalando.$PRODUCTS_SECTION)
         });
     },
 
@@ -66,14 +77,96 @@ var Zalando = {
      * draw products on page content by mustache
      * @param data
      */
-    drawMustache: function (data) {
-        var template = $('#products').html();
+    renderedMustache: function (data, addedElement, elementPlace) {
+        var template = addedElement.html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, data);
-        Zalando.$PRODUCT_SECTION.append(rendered);
-    }
-};
+        elementPlace.append(rendered);
+    },
 
-$(document).ready(function () {
-    Zalando.init();
-});
+
+    //functions to subpage
+    
+    /**
+     * get product id by window.location.hash method
+     * @returns {*}
+     */
+    getProductId: function () {
+        var hash = window.location.hash;
+        var id = hash.split('#');
+        return id[1];
+    },
+
+    /**
+     * draw product details
+     * @param data
+     */
+    renderedMustacheProduct: function (data) {
+        var template = $('#product-detail').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, data);
+        $('.product-detail').html(rendered);
+    },
+
+    renderedMustacheOwlCarousel: function (data) {
+        var template = $('#owl-carousel').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, data);
+        $('#owl-product').append(rendered);
+    },
+
+    /**
+     * get products from proper url
+     * @param isFilter
+     * @param endpoint
+     */
+    getProductDetail: function (id) {
+        $.ajax({
+            url: Zalando.URL + id,
+            method: 'get',
+            dataType: 'JSON',
+            headers: {
+                'Accept-Language': 'en'
+            },
+            success: function (response) {
+                console.log(response);
+                Zalando.renderedMustacheProduct(response);
+                Zalando.renderedMustacheOwlCarousel(response);
+                Zalando.owlCarousel();
+                Zalando.owlRefresh();
+            },
+            error: function () {
+                alert ("Error getting data");
+            }
+        });
+    },
+
+    owlCarousel: function () {
+        $('.owl-carousel').owlCarousel({
+            items: 1,
+            singleItem: true,
+            autoplay: true,
+            autoplayHoverPause: true,
+            dots: false,
+            loop: true,
+            margin: 10,
+            mouseDrag: true,
+            nav: true,
+            smartSpeed: 1000,
+            navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+                '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
+        });
+    },
+
+    owlRefresh: function (){
+        $('.owl-carousel').trigger('refresh.owl.carousel');
+    },
+    
+    getPreviouslyPage: function (btn) {
+        btn.on('click', function () {
+            window.history.back();
+        })
+    }
+
+
+};
