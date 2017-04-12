@@ -3,11 +3,19 @@
   justify-content: space-between;
 }
 
-.flex-column{
+.flex-column {
   display: flex;
   flex-direction: column;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }

@@ -8,9 +8,16 @@
 </head>
 <body>
 <header>
-    <div class="container rwd-flex-column flex-between">
+    <div class="container flex-between flex-wrap">
         <div class="logo-block">
             <a href="/" class="logo-link"></a>
+        </div>
+        <div class="cart-section">
+            <div class="cart-box">
+                <a href="#" class="cart-link">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
         <div class="category-section">
             <div class="category-block flex-between">
@@ -24,15 +31,8 @@
                     <a href="#" class="category-link" data-ageGroup="kids">Kids</a>
                 </div>
             </div>
-            <div class="select-option">
-                <select name="select" id="select">
-                    <option value="Category">Category...</option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                    <option value="c">c</option>
-                </select>
-            </div>
         </div>
+        <p class="cart-message hide">Your product was added to shopping cart!</p>
     </div>
 </header>
 
@@ -65,9 +65,13 @@
         <div class="footer-block footer-links">
             <h4>Find Us on</h4>
             <div class="icon-list">
-                <a href="https://www.instagram.com/zalando/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://pl-pl.facebook.com/zalando.polska/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-                <a href="https://www.youtube.com/user/ZalandoTV" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a><a href="https://twitter.com/zalando"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/zalando/" target="_blank"><i class="fa fa-instagram"
+                                                                                aria-hidden="true"></i></a>
+                <a href="https://pl-pl.facebook.com/zalando.polska/" target="_blank"><i class="fa fa-facebook-square"
+                                                                                        aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/user/ZalandoTV" target="_blank"><i class="fa fa-youtube-square"
+                                                                                    aria-hidden="true"></i></a><a
+                    href="https://twitter.com/zalando"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -81,6 +85,8 @@
             <p class="product-price">{{units.0.price.formatted}}</p>
         </div>
     </a>
+
+
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
