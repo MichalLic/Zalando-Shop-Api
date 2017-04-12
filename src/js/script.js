@@ -5,6 +5,7 @@ var Zalando = {
     $CATEGORY_LINK: $('.category-link'),
     $PRODUCTS_SECTION: $('.products-section'),
     PRODUCT_DETAIL: 'product-detail',
+    LOCAL: JSON.parse(localStorage.getItem('products')) || [],
 
     //init
     init: function () {
@@ -19,7 +20,7 @@ var Zalando = {
 
     initSubpageCart: function () {
         var id = localStorage.getItem('id').replace(/['"]+/g, '');
-        Zalando.getProductDetailToCart(id);
+        // Zalando.getProductDetailToCart(id);
     },
 
     //function
@@ -140,6 +141,8 @@ var Zalando = {
                 localStorage.setItem('id', JSON.stringify(response.id));
                 Zalando.owlCarousel();
                 Zalando.owlRefresh();
+                Zalando.drawCartDetail();
+                Zalando.onPutToCart($('.add-link'));
             },
             error: function () {
                 alert("Error getting data");
@@ -180,27 +183,35 @@ var Zalando = {
      */
     addToCart: function (data) {
         console.log('kskskks');
-        var products = JSON.parse(localStorage.getItem('products')) || [];
+        var products = Zalando.LOCAL;
+            /*JSON.parse(localStorage.getItem('products')) || [];*/
         console.log(products);
         var productDetails = {
             name: data.name,
             price: data.units[0].price.formatted,
             img: data.media.images[0].thumbnailHdUrl
         };
-        console.log(productDetails);
         products.push(productDetails);
+        Zalando.drawCartDetail();
         localStorage.setItem('products', JSON.stringify(products));
 
-        $.map(products, function (item) {
-            console.log(item);
-            var block = '';
-            block += '<span>' + item.name + '</span>';
-            block += '<span><img src="'+item.img+'">'+ '</img></span>';
-            block += item.price;
-            $('.cart-section').append(block)
-        })
+        console.log(products);
     },
+    
 
+    drawCartDetail: function () {
+      var products = Zalando.LOCAL;
+      console.log(products);
+      var block = '';
+        $.map(products, function (item) {
+            block += '<div class="cart-product-detail">';
+            block += '<span>' + item.name + '</span>';
+            block += '<span><img src="' + item.img + '">' + '</img></span>';
+            block += '<span>' + item.price + '</span>';
+            block += '</div>';
+          $('.cart-block').html(block);
+      });
+    },
 
     getProductDetailToCart: function (id) {
         $.ajax({
@@ -213,12 +224,37 @@ var Zalando = {
             success: function (response) {
                 console.log(response);
                 Zalando.addToCart(response);
-                // Zalando.renderedMustacheToCart(response);
             },
             error: function () {
-                alert ("Error getting data");
+                alert("Error getting data");
             }
         });
+    },
+
+    onPutToCart: function (btn) {
+        console.log($('.add-link'));
+        btn.on('click', function (e) {
+            e.preventDefault();
+            var id = localStorage.getItem('id').replace(/['"]+/g, '');
+            console.log(id);
+            Zalando.scrollToTop();
+            Zalando.getProductDetailToCart(id)
+        });
+    },
+
+    scrollToTop: function () {
+        $("html, body").animate({scrollTop: 0}, "slow");
+        // Zalando.showMessage();
     }
+
+    // showMessage: function () {
+    //     console.log('jajaj')
+    //     $('.cart-message').addClass('show');
+    //
+    //     setTimeout(function () {
+    //         $('.cart-message').removeClass('show');
+    //     }, 3000);
+    // },
+
 
 };
