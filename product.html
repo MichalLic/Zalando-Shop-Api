@@ -15,13 +15,11 @@
         <div class="btn-prev">
             <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
         </div>
-        <div class="cart-section">
-            <div class="cart-box">
-                <a href="cart.html" class="cart-link">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                </a>
-                <p class="cart-message hide">Your product was added to shopping cart!</p>
-            </div>
+        <div class="btn-cart">
+            <a href="cart.html" class="cart-link">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+            <p class="cart-message hide">Your product was added to shopping cart!</p>
         </div>
     </div>
 </header>
@@ -84,15 +82,17 @@
             <span><b>Type of material</b> {{attributes.7.values.0}}</span>
             <span><b>Pattern</b> {{attributes.9.values.0}}</span>
         </div>
-        <div class="btn-cart">
+        <div class="btn-add">
             <a href="#" class="add-link">Add to cart</a>
         </div>
+
 </script>
 <script id="owl-carousel" type="x-tmpl-mustache">
     <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
     <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
     <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
     <div class="owl-item"><img src="{{media.images.3.smallHdUrl}}"></img></div>
+
 
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>

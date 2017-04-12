@@ -68,27 +68,6 @@ header {
   }
 }
 
-.cart-section {
-  order: 2;
-  position: relative;
-
-  .cart-box{
-    background-color: $color-orange;
-    border-radius: 21px;
-  }
-
-  a{
-    color: $color-grey-light;
-    font-size: 22px;
-    width: 60px;
-    height: 30px;
-    margin: 0 auto;
-    display: block;
-    line-height: 30px;
-    text-align: center;
-  }
-}
-
 .cart-message {
   position: absolute;
   right: 0;
