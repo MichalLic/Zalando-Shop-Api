@@ -52,3 +52,22 @@
     background-color: lighten($color-orange, 20%);
   }
 }
+
+.btn-remove-item{
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: $color-grey-dark;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 15px;
+  color: $color-grey;
+
+  @media (max-width: $bp-md) {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+}
