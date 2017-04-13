@@ -1,15 +1,15 @@
 var ProductControl = {
 
-    //init
-    initSubpageDetail: function () {
+    //Fnit
+    init: function () {
         var id = ProductControl.getProductId();
         ProductControl.getProductDetail(id);
         Zalando.getPreviouslyPage(Zalando.$BTN_PREV);
     },
 
-    //functions to subpage product detail
+    //Functions
     /**
-     * get product id by window.location.hash method
+     * Get product id by window.location.hash method
      * @returns {*}
      */
     getProductId: function () {
@@ -19,7 +19,7 @@ var ProductControl = {
     },
 
     /**
-     * draw product details
+     * Draw product details
      * @param data
      */
     renderedMustacheProduct: function (data) {
@@ -30,7 +30,7 @@ var ProductControl = {
     },
 
     /**
-     * draw owl carousel
+     * Draw owl carousel
      * @param data
      */
     renderedMustacheOwlCarousel: function (data) {
@@ -41,7 +41,7 @@ var ProductControl = {
     },
 
     /**
-     * get products from proper url
+     * Get products from proper url
      * @param isFilter
      * @param endpoint
      */
@@ -61,7 +61,7 @@ var ProductControl = {
                 ProductControl.owlCarousel();
                 ProductControl.owlRefresh();
 
-                //init cart page functions
+                //Init cart page functions
                 CartControl.drawCartDetail();
                 CartControl.onPutToCart($('.add-link'));
             },
@@ -72,7 +72,7 @@ var ProductControl = {
     },
 
     /**
-     * init carousel and properties
+     * Init carousel and properties
      */
     owlCarousel: function () {
         $('.owl-carousel').owlCarousel({
@@ -92,7 +92,7 @@ var ProductControl = {
     },
 
     /**
-     * refresh owl after loaded
+     * Refresh owl after loaded
      */
     owlRefresh: function () {
         $('.owl-carousel').trigger('refresh.owl.carousel');
