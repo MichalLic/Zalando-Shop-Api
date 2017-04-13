@@ -1,6 +1,6 @@
 var ProductControl = {
 
-    //Fnit
+    //Init
     init: function () {
         var id = ProductControl.getProductId();
         ProductControl.getProductDetail(id);
