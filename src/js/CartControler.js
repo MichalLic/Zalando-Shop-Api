@@ -42,7 +42,12 @@ var CartControl = {
         $('.cart-block').html(block);
         CartControl.onRemoveLocalStorageItem($('.btn-remove-item'));
         CartControl.emptyCartMessage();
-
+        if (block != '') {
+            CartControl.addRemovedButton();
+        } else {
+            $('.btn-remove-items').remove();
+        }
+        CartControl.removeAllItems($('.btn-remove-items'));
     },
 
     getProductDetailToCart: function (id) {
@@ -67,7 +72,7 @@ var CartControl = {
             e.preventDefault();
             var id = localStorage.getItem('id').replace(/['"]+/g, '');
             Zalando.scrollToTop();
-            CartControl.getProductDetailToCart(id)
+            CartControl.getProductDetailToCart(id);
         });
     },
 
@@ -90,6 +95,20 @@ var CartControl = {
                     CartControl.drawCartDetail();
                 }
             }
+        })
+    },
+
+    addRemovedButton: function () {
+        var block = '<a href="#" class="btn-remove-items">Remove all</a>';
+        $('.removed-block').html(block);
+    },
+
+    removeAllItems: function (btn) {
+        btn.on('click', function (e) {
+            e.preventDefault();
+            localStorage.setItem('products', JSON.stringify(''));
+            console.log('aaacacacac');
+            CartControl.drawCartDetail();
         })
     }
 
