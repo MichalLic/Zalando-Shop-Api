@@ -4,7 +4,6 @@ var CartControl = {
     init: function () {
         Zalando.getPreviouslyPage(Zalando.$BTN_PREV);
         CartControl.drawCartDetail();
-        CartControl.onRemoveLocalStorageItem($('.btn-remove-item'));
         CartControl.emptyCartMessage();
     },
 
@@ -33,14 +32,17 @@ var CartControl = {
         var products = Zalando.LOCAL;
         var block = '';
         $.map(products, function (item) {
-                block += '<div class="cart-product-detail">';
-                block += '<span>' + item.name + '</span>';
-                block += '<span><b>' + item.price + '</b></span>';
-                block += '<span><img src="' + item.img + '">' + '</img></span>';
-                block += '<a href="#" data-id="' + item.id + '" class="btn-remove-item"><i class="fa fa-times" aria-hidden="true"></i></a>';
-                block += '</div>';
-            });
-            $('.cart-block').html(block);
+            block += '<div class="cart-product-detail">';
+            block += '<span>' + item.name + '</span>';
+            block += '<span><b>' + item.price + '</b></span>';
+            block += '<span><img src="' + item.img + '">' + '</img></span>';
+            block += '<a href="#" data-id="' + item.id + '" class="btn-remove-item"><i class="fa fa-times" aria-hidden="true"></i></a>';
+            block += '</div>';
+        });
+        $('.cart-block').html(block);
+        CartControl.onRemoveLocalStorageItem($('.btn-remove-item'));
+        CartControl.emptyCartMessage();
+
     },
 
     getProductDetailToCart: function (id) {
@@ -70,20 +72,17 @@ var CartControl = {
     },
 
     emptyCartMessage: function () {
-      if($('.cart-block').is(':empty')){
-          $('.cart-block').append('<p class="cart-message-empty">Your cart is currently empty!</p>');
-      }
+        if ($('.cart-block').is(':empty')) {
+            $('.cart-block').append('<p class="cart-message-empty">Your cart is currently empty!</p>');
+        }
     },
 
     onRemoveLocalStorageItem: function (btn) {
         btn.on('click', function (e) {
             e.preventDefault();
             var product = Zalando.LOCAL;
-            CartControl.drawCartDetail();
             for (var i = 0; i < product.length; i++) {
-                console.log(product[i].id);
                 if (product[i].id === $(this).attr('data-id')) {
-                    // console.log(product.splice(i,1));
                     console.log(this);
                     console.log(product);
                     localStorage.removeItem(product.splice(i, 1));
