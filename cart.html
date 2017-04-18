@@ -8,36 +8,19 @@
 </head>
 <body>
 <header>
-    <div class="container flex-between flex-wrap">
+    <div class="container flex-between">
         <div class="logo-block">
             <a href="/" class="logo-link"></a>
         </div>
-        <div class="btn-cart">
-            <a href="cart.html" class="cart-link">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            </a>
-        </div>
-        <div class="category-section">
-            <div class="category-block flex-between">
-                <div class="category-option">
-                    <a href="#" class="category-link" data-gender="male">Men</a>
-                </div>
-                <div class="category-option">
-                    <a href="#" class="category-link" data-gender="female">Women</a>
-                </div>
-                <div class="category-option">
-                    <a href="#" class="category-link" data-ageGroup="kids">Kids</a>
-                </div>
-            </div>
+        <div class="btn-prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
         </div>
     </div>
 </header>
 
 <main>
-    <div class="container">
-        <div class="products-section">
-
-        </div>
+    <div class="container ">
+        <div class="cart-block"></div>
     </div>
 </main>
 
@@ -73,22 +56,11 @@
         </div>
     </div>
 </footer>
-<script id="products" type="x-tmpl-mustache">
-    <a href="product.html#{{id}}" data-id='{{id}}' class="product-link">
-        <div class="product-item">
-            <img src="{{media.images.0.smallHdUrl}}"></img>
-            <p class="product-name">{{name}}</p>
-            <p class="product-season">Season: {{season}}</p>
-            <p class="product-price">{{units.0.price.formatted}}</p>
-        </div>
-    </a>
-
-</script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
 <script>
     $(document).ready(function () {
-        Zalando.init();
+        CartControl.init();
     });
 </script>
 </body>
