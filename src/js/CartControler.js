@@ -1,10 +1,12 @@
 var CartControl = {
+    $CART_BLOCK: $('.cart-block'),
 
     //Init
     init: function () {
         Zalando.getPreviouslyPage(Zalando.$BTN_PREV);
         CartControl.drawCartDetail();
-        CartControl.emptyCartMessage();
+        CartControl.onRemoveLocalStorageItem();
+        CartControl.removeAllItems();
     },
 
     //Functions
@@ -32,19 +34,17 @@ var CartControl = {
             block += '<div class="cart-product-detail">';
             block += '<span>' + item.name + '</span>';
             block += '<span><b>' + item.price + '</b></span>';
-            block += '<span><img src="' + item.img + '">' + '</img></span>';
+            block += '<span><img src="' + item.img + '"></span>';
             block += '<a href="#" data-id="' + item.id + '" class="btn-remove-item"><i class="fa fa-times" aria-hidden="true"></i></a>';
             block += '</div>';
         });
-        $('.cart-block').html(block);
-        CartControl.onRemoveLocalStorageItem($('.btn-remove-item'));
+        CartControl.$CART_BLOCK.html(block);
         CartControl.emptyCartMessage();
         if (block != '') {
             CartControl.addRemovedButton();
         } else {
             $('.btn-remove-items').remove();
         }
-        CartControl.removeAllItems($('.btn-remove-items'));
     },
 
     getProductDetailToCart: function (id) {
@@ -74,13 +74,13 @@ var CartControl = {
     },
 
     emptyCartMessage: function () {
-        if ($('.cart-block').is(':empty')) {
-            $('.cart-block').append('<p class="cart-message-empty">Your basket is currently empty!</p>');
+        if (CartControl.$CART_BLOCK.is(':empty')) {
+            CartControl.$CART_BLOCK.append('<p class="cart-message-empty">Your basket is currently empty!</p>');
         }
     },
 
-    onRemoveLocalStorageItem: function (btn) {
-        btn.on('click', function (e) {
+    onRemoveLocalStorageItem: function () {
+        CartControl.$CART_BLOCK.on('click', '.btn-remove-item', function (e) {
             e.preventDefault();
             for (var i = 0; i < Zalando.LOCAL.length; i++) {
                 if (Zalando.LOCAL[i].id === $(this).attr('data-id')) {
@@ -96,11 +96,11 @@ var CartControl = {
 
     addRemovedButton: function () {
         var block = '<a href="#" class="btn-remove-items">Remove all</a>';
-        $('.removed-block').html(block);
+        $('.remove-block').html(block);
     },
 
-    removeAllItems: function (btn) {
-        btn.on('click', function (e) {
+    removeAllItems: function () {
+        $('main').on('click','.btn-remove-items', function (e) {
             e.preventDefault();
             localStorage.setItem('products', JSON.stringify(''));
             Zalando.refreshProductsCollection();

@@ -1,4 +1,5 @@
 var ProductControl = {
+    $OWL_CAROUSEL: $('.owl-carousel'),
 
     //Init
     init: function () {
@@ -42,8 +43,6 @@ var ProductControl = {
 
     /**
      * Get products from proper url
-     * @param isFilter
-     * @param endpoint
      */
     getProductDetail: function (id) {
         $.ajax({
@@ -75,7 +74,7 @@ var ProductControl = {
      * Init carousel and properties
      */
     owlCarousel: function () {
-        $('.owl-carousel').owlCarousel({
+        ProductControl.$OWL_CAROUSEL.owlCarousel({
             items: 1,
             singleItem: true,
             autoplay: true,
@@ -95,7 +94,7 @@ var ProductControl = {
      * Refresh owl after loaded
      */
     owlRefresh: function () {
-        $('.owl-carousel').trigger('refresh.owl.carousel');
+        ProductControl.$OWL_CAROUSEL.trigger('refresh.owl.carousel');
     }
 
 };
