@@ -97,6 +97,10 @@ var Zalando = {
     scrollToTop: function () {
         $("html, body").animate({scrollTop: 0}, "slow");
         // Zalando.showMessage();
+    },
+
+    refreshProductsCollection: function () {
+        Zalando.LOCAL = JSON.parse(localStorage.getItem('products'));
     }
 
     // showMessage: function () {

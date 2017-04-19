@@ -12,16 +12,14 @@ var CartControl = {
      * Function on subpage cart
      */
     addProductToCart: function (data) {
-        var products = Zalando.LOCAL;
-        console.log(products);
         var productDetails = {
             id: data.id,
             name: data.name,
             price: data.units[0].price.formatted,
             img: data.media.images[0].thumbnailHdUrl
         };
-        products.push(productDetails);
-        localStorage.setItem('products', JSON.stringify(products));
+        Zalando.LOCAL.push(productDetails);
+        localStorage.setItem('products', JSON.stringify(Zalando.LOCAL));
         CartControl.drawCartDetail();
     },
 
@@ -29,9 +27,8 @@ var CartControl = {
      * Draw product detail in cart page
      */
     drawCartDetail: function () {
-        var products = Zalando.LOCAL;
         var block = '';
-        $.map(products, function (item) {
+        $.map(Zalando.LOCAL, function (item) {
             block += '<div class="cart-product-detail">';
             block += '<span>' + item.name + '</span>';
             block += '<span><b>' + item.price + '</b></span>';
@@ -78,20 +75,19 @@ var CartControl = {
 
     emptyCartMessage: function () {
         if ($('.cart-block').is(':empty')) {
-            $('.cart-block').append('<p class="cart-message-empty">Your cart is currently empty!</p>');
+            $('.cart-block').append('<p class="cart-message-empty">Your basket is currently empty!</p>');
         }
     },
 
     onRemoveLocalStorageItem: function (btn) {
         btn.on('click', function (e) {
             e.preventDefault();
-            var product = Zalando.LOCAL;
-            for (var i = 0; i < product.length; i++) {
-                if (product[i].id === $(this).attr('data-id')) {
+            for (var i = 0; i < Zalando.LOCAL.length; i++) {
+                if (Zalando.LOCAL[i].id === $(this).attr('data-id')) {
                     console.log(this);
-                    console.log(product);
-                    localStorage.removeItem(product.splice(i, 1));
-                    localStorage.setItem('products', JSON.stringify(product));
+                    console.log(Zalando.LOCAL);
+                    localStorage.removeItem(Zalando.LOCAL.splice(i, 1));
+                    localStorage.setItem('products', JSON.stringify(Zalando.LOCAL));
                     CartControl.drawCartDetail();
                 }
             }
@@ -107,7 +103,7 @@ var CartControl = {
         btn.on('click', function (e) {
             e.preventDefault();
             localStorage.setItem('products', JSON.stringify(''));
-            console.log('aaacacacac');
+            Zalando.refreshProductsCollection();
             CartControl.drawCartDetail();
         })
     }

@@ -69,11 +69,9 @@
         <p class="product-name">{{name}}</p>
         <div class="size">
             <span><b>Size</b></span>
-            <span>{{units.0.size}}</span>
-            <span>{{units.1.size}}</span>
-            <span>{{units.2.size}}</span>
-            <span>{{units.3.size}}</span>
-            <span>{{units.4.size}}</span>
+            {{#units}}
+            <span>{{size}}</span>
+            {{/units}}
         </div>
             <span><b>Price</b> {{units.0.price.formatted}}</span>
             <span><b>Season</b> {{season}}</span>
@@ -85,15 +83,12 @@
         <div class="btn-add">
             <a href="#" class="add-link">Add to cart</a>
         </div>
-
 </script>
 <script id="owl-carousel" type="x-tmpl-mustache">
     <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
     <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
     <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
     <div class="owl-item"><img src="{{media.images.3.smallHdUrl}}"></img></div>
-
-
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
