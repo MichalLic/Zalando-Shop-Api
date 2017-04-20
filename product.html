@@ -73,6 +73,19 @@
             {{/units}}
         </div>
             <span><b>Price</b> {{units.0.price.formatted}}</span>
+            <label for="quantity"><b>Quantity</b></label>
+            <select name="quantity" type="number" id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
             <span><b>Season</b> {{season}}</span>
             <span><b>Total length</b> {{attributes.2.values.0}}</span>
             <span><b>Material</b> {{attributes.1.values.0}}</span>
@@ -84,10 +97,9 @@
         </div>
 </script>
 <script id="owl-carousel" type="x-tmpl-mustache">
-    <div class="owl-item"><img src="{{media.images.0.smallHdUrl}}"></img></div>
-    <div class="owl-item"><img src="{{media.images.1.smallHdUrl}}"></img></div>
-    <div class="owl-item"><img src="{{media.images.2.smallHdUrl}}"></img></div>
-    <div class="owl-item"><img src="{{media.images.3.smallHdUrl}}"></img></div>
+    {{#media.images}}
+        <div class="owl-item"><img src="{{smallHdUrl}}"></img></div>
+    {{/media.images}}
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>

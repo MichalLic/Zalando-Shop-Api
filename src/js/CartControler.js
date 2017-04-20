@@ -7,6 +7,7 @@ var CartControl = {
         CartControl.drawCartDetail();
         CartControl.onRemoveLocalStorageItem();
         CartControl.removeAllItems();
+
     },
 
     //Functions
@@ -14,12 +15,13 @@ var CartControl = {
      * Function on subpage cart
      */
     addProductToCart: function (data) {
+        var quantity = CartControl.getProductQuantity();
         var productDetails = {
             id: data.id,
             name: data.name,
             price: data.units[0].price.formatted,
             img: data.media.images[0].thumbnailHdUrl,
-            quantity: 1
+            quantity: quantity
         };
 
         if (Zalando.PRODUCTS_LOCAL_STORAGE == '') {
@@ -31,7 +33,7 @@ var CartControl = {
                 if (productDetails.id === item.id) {
                     console.log('dodaje pierwszy lecz koszyk NIE BYL pusty');
                     console.log('increment product quantity');
-                    item.quantity += 1;
+                    item.quantity += quantity;
                     isInCart = true;
                 }
             });
@@ -44,6 +46,11 @@ var CartControl = {
         CartControl.drawCartDetail();
     },
 
+    getProductQuantity: function () {
+        var number = $('#quantity').val();
+        return Number(number);
+    },
+
     /**
      * Draw product detail in cart page
      */
@@ -54,6 +61,7 @@ var CartControl = {
             block += '<span>' + item.name + '</span>';
             block += '<span><b>' + item.price + '</b></span>';
             block += '<span><img src="' + item.img + '"></span>';
+            block += '<span><b>QTY</b>:' + item.quantity + '</span>';
             block += '<a href="#" data-id="' + item.id + '" class="btn-remove-item"><i class="fa fa-times" aria-hidden="true"></i></a>';
             block += '</div>';
         });
