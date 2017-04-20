@@ -18,10 +18,28 @@ var CartControl = {
             id: data.id,
             name: data.name,
             price: data.units[0].price.formatted,
-            img: data.media.images[0].thumbnailHdUrl
+            img: data.media.images[0].thumbnailHdUrl,
+            quantity: 1
         };
-        
-        Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
+
+        if (Zalando.PRODUCTS_LOCAL_STORAGE == '') {
+            console.log('dodaje pierwszy produkt do pustego koszyka');
+            Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
+        } else {
+            var isInCart = false;
+            $.each(Zalando.PRODUCTS_LOCAL_STORAGE, function (index, item) {
+                if (productDetails.id === item.id) {
+                    console.log('dodaje pierwszy lecz koszyk NIE BYL pusty');
+                    console.log('increment product quantity');
+                    item.quantity += 1;
+                    isInCart = true;
+                }
+            });
+                if(isInCart == false) {
+                    console.log('dodaje produkt ktorego nie bylo w koszyku a on mial juz produkty');
+                    Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
+                }
+        }
         localStorage.setItem('products', JSON.stringify(Zalando.PRODUCTS_LOCAL_STORAGE));
         CartControl.drawCartDetail();
     },
@@ -101,7 +119,7 @@ var CartControl = {
     },
 
     removeAllItems: function () {
-        $('main').on('click','.btn-remove-items', function (e) {
+        $('main').on('click', '.btn-remove-items', function (e) {
             e.preventDefault();
             localStorage.setItem('products', JSON.stringify(''));
             Zalando.refreshProductsCollection();
