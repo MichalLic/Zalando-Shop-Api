@@ -20,8 +20,9 @@ var CartControl = {
             price: data.units[0].price.formatted,
             img: data.media.images[0].thumbnailHdUrl
         };
-        Zalando.LOCAL.push(productDetails);
-        localStorage.setItem('products', JSON.stringify(Zalando.LOCAL));
+        
+        Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
+        localStorage.setItem('products', JSON.stringify(Zalando.PRODUCTS_LOCAL_STORAGE));
         CartControl.drawCartDetail();
     },
 
@@ -30,7 +31,7 @@ var CartControl = {
      */
     drawCartDetail: function () {
         var block = '';
-        $.map(Zalando.LOCAL, function (item) {
+        $.map(Zalando.PRODUCTS_LOCAL_STORAGE, function (item) {
             block += '<div class="cart-product-detail">';
             block += '<span>' + item.name + '</span>';
             block += '<span><b>' + item.price + '</b></span>';
@@ -82,12 +83,12 @@ var CartControl = {
     onRemoveLocalStorageItem: function () {
         CartControl.$CART_BLOCK.on('click', '.btn-remove-item', function (e) {
             e.preventDefault();
-            for (var i = 0; i < Zalando.LOCAL.length; i++) {
-                if (Zalando.LOCAL[i].id === $(this).attr('data-id')) {
+            for (var i = 0; i < Zalando.PRODUCTS_LOCAL_STORAGE.length; i++) {
+                if (Zalando.PRODUCTS_LOCAL_STORAGE[i].id === $(this).attr('data-id')) {
                     console.log(this);
-                    console.log(Zalando.LOCAL);
-                    localStorage.removeItem(Zalando.LOCAL.splice(i, 1));
-                    localStorage.setItem('products', JSON.stringify(Zalando.LOCAL));
+                    console.log(Zalando.PRODUCTS_LOCAL_STORAGE);
+                    localStorage.removeItem(Zalando.PRODUCTS_LOCAL_STORAGE.splice(i, 1));
+                    localStorage.setItem('products', JSON.stringify(Zalando.PRODUCTS_LOCAL_STORAGE));
                     CartControl.drawCartDetail();
                 }
             }
