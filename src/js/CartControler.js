@@ -20,13 +20,13 @@ var CartControl = {
             id: data.id,
             name: data.name,
             price: data.units[0].price.value,
+            currency: '£',
             img: data.media.images[0].thumbnailHdUrl,
             quantity: quantity
         };
 
         if (Zalando.PRODUCTS_LOCAL_STORAGE == '') {
             console.log('dodaje pierwszy produkt do pustego koszyka');
-            productDetails.price = data.units[0].price.value * productDetails.quantity;
             Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
         } else {
             var isInCart = false;
@@ -35,8 +35,6 @@ var CartControl = {
                     console.log('dodaje pierwszy lecz koszyk NIE BYL pusty');
                     console.log('increment product quantity');
                     item.quantity += quantity;
-                    item.price = '';
-                    item.price = data.units[0].price.value * item.quantity;
                     isInCart = true;
                 }
             });
@@ -61,8 +59,8 @@ var CartControl = {
         var block = '';
         $.map(Zalando.PRODUCTS_LOCAL_STORAGE, function (item) {
             block += '<div class="cart-product-detail">';
-            block += '<span>' + item.name + '</span>';
-            block += '<span><b>' + item.price + '</b></span>';
+            block += '<span><a href="product.html#'+item.id+'">'+item.name+'</a></span>';
+            block += '<span><b>' + item.currency + item.price*item.quantity + '</b></span>';
             block += '<span><img src="' + item.img + '"></span>';
             block += '<span><b>QTY</b>:' + item.quantity + '</span>';
             block += '<a href="#" data-id="' + item.id + '" class="btn-remove-item"><i class="fa fa-times" aria-hidden="true"></i></a>';
@@ -114,8 +112,6 @@ var CartControl = {
             e.preventDefault();
             for (var i = 0; i < Zalando.PRODUCTS_LOCAL_STORAGE.length; i++) {
                 if (Zalando.PRODUCTS_LOCAL_STORAGE[i].id === $(this).attr('data-id')) {
-                    console.log(this);
-                    console.log(Zalando.PRODUCTS_LOCAL_STORAGE);
                     localStorage.removeItem(Zalando.PRODUCTS_LOCAL_STORAGE.splice(i, 1));
                     localStorage.setItem('products', JSON.stringify(Zalando.PRODUCTS_LOCAL_STORAGE));
                     CartControl.drawCartDetail();

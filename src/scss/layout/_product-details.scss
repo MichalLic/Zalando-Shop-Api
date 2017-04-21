@@ -88,6 +88,13 @@
       flex: 2;
       text-align: start;
     }
+    a{
+      color: $color-grey-dark;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
 
     @media (max-width: $bp-lg) {
       font-size: 13px;
