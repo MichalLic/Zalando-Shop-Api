@@ -50,7 +50,8 @@
     span {
       background-color: $color-grey;
       padding: 5px 8px;
-      margin-right: 6px;
+      display: inline-block;
+      margin: 0 6px 10px 0;
       border-radius: 5px;
 
       @media (max-width: $bp-xs) {

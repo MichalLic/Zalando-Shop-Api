@@ -19,13 +19,14 @@ var CartControl = {
         var productDetails = {
             id: data.id,
             name: data.name,
-            price: data.units[0].price.formatted,
+            price: data.units[0].price.value,
             img: data.media.images[0].thumbnailHdUrl,
             quantity: quantity
         };
 
         if (Zalando.PRODUCTS_LOCAL_STORAGE == '') {
             console.log('dodaje pierwszy produkt do pustego koszyka');
+            productDetails.price = data.units[0].price.value * productDetails.quantity;
             Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
         } else {
             var isInCart = false;
@@ -34,6 +35,8 @@ var CartControl = {
                     console.log('dodaje pierwszy lecz koszyk NIE BYL pusty');
                     console.log('increment product quantity');
                     item.quantity += quantity;
+                    item.price = '';
+                    item.price = data.units[0].price.value * item.quantity;
                     isInCart = true;
                 }
             });
