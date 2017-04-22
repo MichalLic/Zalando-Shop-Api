@@ -1,4 +1,6 @@
 var ProductControl = {
+    $OWL_CAROUSEL: $('.owl-carousel'),
+    $CART_MODAL: $('.cart-modal'),
 
     //Init
     init: function () {
@@ -42,8 +44,6 @@ var ProductControl = {
 
     /**
      * Get products from proper url
-     * @param isFilter
-     * @param endpoint
      */
     getProductDetail: function (id) {
         $.ajax({
@@ -71,11 +71,21 @@ var ProductControl = {
         });
     },
 
+    showMessage: function () {
+        // ProductControl.$CART_MODAL.removeClass('hide').addClass('show');
+
+
+        ProductControl.$CART_MODAL.show('slow');
+        setTimeout(function () {
+            ProductControl.$CART_MODAL.hide('slow');
+            }, 4000);
+    },
+
     /**
      * Init carousel and properties
      */
     owlCarousel: function () {
-        $('.owl-carousel').owlCarousel({
+        ProductControl.$OWL_CAROUSEL.owlCarousel({
             items: 1,
             singleItem: true,
             autoplay: true,
@@ -95,7 +105,7 @@ var ProductControl = {
      * Refresh owl after loaded
      */
     owlRefresh: function () {
-        $('.owl-carousel').trigger('refresh.owl.carousel');
+        ProductControl.$OWL_CAROUSEL.trigger('refresh.owl.carousel');
     }
 
 };

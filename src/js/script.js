@@ -6,7 +6,7 @@ var Zalando = {
     $PRODUCTS_SECTION: $('.products-section'),
     PRODUCT_DETAIL: 'product-detail',
     $BTN_PREV: $('.btn-prev'),
-    LOCAL: JSON.parse(localStorage.getItem('products')) || [],
+    PRODUCTS_LOCAL_STORAGE: JSON.parse(localStorage.getItem('products')) || [],
 
     //Init
     init: function () {
@@ -21,7 +21,7 @@ var Zalando = {
      * @param endpoint
      */
     getProducts: function (isFilter, endpoint) {
-        var filters = (isFilter == true) ? endpoint : "";
+        var filters = (isFilter === true) ? endpoint : "";
         $.ajax({
             url: Zalando.URL + filters,
             method: 'get',
@@ -96,17 +96,9 @@ var Zalando = {
      */
     scrollToTop: function () {
         $("html, body").animate({scrollTop: 0}, "slow");
-        // Zalando.showMessage();
+    },
+
+    refreshProductsCollection: function () {
+        Zalando.PRODUCTS_LOCAL_STORAGE = JSON.parse(localStorage.getItem('products'));
     }
-
-    // showMessage: function () {
-    //     console.log('jajaj')
-    //     $('.cart-message').addClass('show');
-    //
-    //     setTimeout(function () {
-    //         $('.cart-message').removeClass('show');
-    //     }, 3000);
-    // },
-
-
 };
