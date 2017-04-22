@@ -1,5 +1,6 @@
 var ProductControl = {
     $OWL_CAROUSEL: $('.owl-carousel'),
+    $CART_MODAL: $('.cart-modal'),
 
     //Init
     init: function () {
@@ -68,6 +69,16 @@ var ProductControl = {
                 alert("Error getting data");
             }
         });
+    },
+
+    showMessage: function () {
+        // ProductControl.$CART_MODAL.removeClass('hide').addClass('show');
+
+
+        ProductControl.$CART_MODAL.show('slow');
+        setTimeout(function () {
+            ProductControl.$CART_MODAL.hide('slow');
+            }, 4000);
     },
 
     /**

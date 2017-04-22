@@ -21,7 +21,7 @@ var Zalando = {
      * @param endpoint
      */
     getProducts: function (isFilter, endpoint) {
-        var filters = (isFilter == true) ? endpoint : "";
+        var filters = (isFilter === true) ? endpoint : "";
         $.ajax({
             url: Zalando.URL + filters,
             method: 'get',

@@ -97,6 +97,7 @@ var CartControl = {
             e.preventDefault();
             var id = localStorage.getItem('id').replace(/['"]+/g, '');
             Zalando.scrollToTop();
+            ProductControl.showMessage();
             CartControl.getProductDetailToCart(id);
         });
     },
