@@ -5,6 +5,7 @@
   background-color: $color-grey-light;
   padding: 2px 30px;
   font-size: 25px;
+  z-index: 2;
 
   @media (max-width: $bp-md) {
     left: 15px;

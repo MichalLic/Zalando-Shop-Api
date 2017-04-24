@@ -130,18 +130,25 @@
 }
 
 .cart-modal {
-  display: none;
   position: absolute;
+  top: 20px;
+  right: -100%;
   width: 270px;
   height: 70px;
   border: 1px solid $color-orange;
   background-color: lighten($color-orange, 30%);
   border-radius: 6px;
-  top: 100px;
-  right: 0;
   z-index: 2;
   text-align: center;
   line-height: 70px;
   color: $color-grey-dark;
   font-size: 15px;
+  transition: 1s;
+
+  @media (max-width: $bp-xs) {
+    width: 240px;
+    height: 45px;
+    line-height: 45px;
+    transition: 3s;
+  }
 }
