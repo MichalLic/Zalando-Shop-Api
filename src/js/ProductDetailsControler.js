@@ -1,6 +1,7 @@
 var ProductControl = {
     $OWL_CAROUSEL: $('.owl-carousel'),
     $CART_MODAL: $('.cart-modal'),
+    $ADD_LINK: $('.add-link'),
 
     //Init
     init: function () {
@@ -79,7 +80,17 @@ var ProductControl = {
 
         setTimeout(function () {
             ProductControl.$CART_MODAL.removeClass('show');
-            }, 4000);
+        }, 4000);
+    },
+
+    activeLoader: function () {
+        $('.add-link').css('pointer-events', 'none');
+        $('.spinner').removeClass('hide');
+    },
+
+    inactiveLoader: function () {
+        $('.add-link').css('pointer-events', 'auto');
+        $('.spinner').addClass('hide');
     },
 
     /**

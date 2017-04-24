@@ -38,10 +38,10 @@ var CartControl = {
                     isInCart = true;
                 }
             });
-                if(isInCart === false) {
-                    console.log('dodaje produkt ktorego nie bylo w koszyku a on mial juz produkty');
-                    Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
-                }
+            if (isInCart === false) {
+                console.log('dodaje produkt ktorego nie bylo w koszyku a on mial juz produkty');
+                Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
+            }
         }
         localStorage.setItem('products', JSON.stringify(Zalando.PRODUCTS_LOCAL_STORAGE));
         CartControl.drawCartDetail();
@@ -63,8 +63,8 @@ var CartControl = {
         var block = '';
         $.map(Zalando.PRODUCTS_LOCAL_STORAGE, function (item) {
             block += '<div class="cart-product-detail">';
-            block += '<span><a href="product.html#'+item.id+'">'+item.name+'</a></span>';
-            block += '<span><b>' + item.currency + item.price*item.quantity + '</b></span>';
+            block += '<span><a href="product.html#' + item.id + '">' + item.name + '</a></span>';
+            block += '<span><b>' + item.currency + item.price * item.quantity + '</b></span>';
             block += '<span><img src="' + item.img + '"></span>';
             block += '<span><b>QTY</b>:' + item.quantity + '</span>';
             block += '<a href="#" data-id="' + item.id + '" class="btn-remove-item"><i class="fa fa-times" aria-hidden="true"></i></a>';
@@ -108,9 +108,11 @@ var CartControl = {
         btn.on('click', function (e) {
             e.preventDefault();
             var id = localStorage.getItem('id').replace(/['"]+/g, '');
+            ProductControl.activeLoader();
             Zalando.scrollToTop();
             ProductControl.showMessage();
             CartControl.getProductDetailToCart(id);
+            ProductControl.inactiveLoader();
         });
     },
 
@@ -138,6 +140,7 @@ var CartControl = {
             }
         })
     },
+
 
     /**
      * add button to html
