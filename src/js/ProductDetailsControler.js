@@ -71,13 +71,14 @@ var ProductControl = {
         });
     },
 
+    /**
+     * show message after add product to basket
+     */
     showMessage: function () {
-        // ProductControl.$CART_MODAL.removeClass('hide').addClass('show');
+        ProductControl.$CART_MODAL.addClass('show');
 
-
-        ProductControl.$CART_MODAL.show('slow');
         setTimeout(function () {
-            ProductControl.$CART_MODAL.hide('slow');
+            ProductControl.$CART_MODAL.removeClass('show');
             }, 4000);
     },
 

@@ -25,7 +25,7 @@ var CartControl = {
             quantity: quantity
         };
 
-        if (Zalando.PRODUCTS_LOCAL_STORAGE == '') {
+        if (Zalando.PRODUCTS_LOCAL_STORAGE === '') {
             console.log('dodaje pierwszy produkt do pustego koszyka');
             Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
         } else {
@@ -38,7 +38,7 @@ var CartControl = {
                     isInCart = true;
                 }
             });
-                if(isInCart == false) {
+                if(isInCart === false) {
                     console.log('dodaje produkt ktorego nie bylo w koszyku a on mial juz produkty');
                     Zalando.PRODUCTS_LOCAL_STORAGE.push(productDetails);
                 }
@@ -47,6 +47,10 @@ var CartControl = {
         CartControl.drawCartDetail();
     },
 
+    /**
+     * get integer value
+     * @returns {number}
+     */
     getProductQuantity: function () {
         var number = $('#quantity').val();
         return Number(number);
@@ -68,13 +72,17 @@ var CartControl = {
         });
         CartControl.$CART_BLOCK.html(block);
         CartControl.emptyCartMessage();
-        if (block != '') {
+        if (block !== '') {
             CartControl.addRemovedButton();
         } else {
             $('.btn-remove-items').remove();
         }
     },
 
+    /**
+     * get data and init first function
+     * @param id
+     */
     getProductDetailToCart: function (id) {
         $.ajax({
             url: Zalando.URL + id,
@@ -92,6 +100,10 @@ var CartControl = {
         });
     },
 
+    /**
+     * put product to basket
+     * @param btn
+     */
     onPutToCart: function (btn) {
         btn.on('click', function (e) {
             e.preventDefault();
@@ -102,12 +114,18 @@ var CartControl = {
         });
     },
 
+    /**
+     * show message in case of empty basket
+     */
     emptyCartMessage: function () {
         if (CartControl.$CART_BLOCK.is(':empty')) {
             CartControl.$CART_BLOCK.append('<p class="cart-message-empty">Your basket is currently empty!</p>');
         }
     },
 
+    /**
+     * remove single item by using localStorage
+     */
     onRemoveLocalStorageItem: function () {
         CartControl.$CART_BLOCK.on('click', '.btn-remove-item', function (e) {
             e.preventDefault();
@@ -121,11 +139,17 @@ var CartControl = {
         })
     },
 
+    /**
+     * add button to html
+     */
     addRemovedButton: function () {
         var block = '<a href="#" class="btn-remove-items">Remove all</a>';
         $('.remove-block').html(block);
     },
 
+    /**
+     * remove all products by using localStorage
+     */
     removeAllItems: function () {
         $('main').on('click', '.btn-remove-items', function (e) {
             e.preventDefault();
