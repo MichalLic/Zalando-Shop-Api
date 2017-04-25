@@ -5,3 +5,18 @@
   height: 20px;
   outline: none;
 }
+
+#filter-input {
+  margin: 15px 0 5px 0;
+  height: 25px;
+  width: calc(100% - 46px);
+  border: 1px solid $color-grey;
+  padding-left: 10px;
+  color: $color-grey-dark;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px $color-orange;
+    border: 0;
+  }
+}

@@ -33,6 +33,7 @@ var Zalando = {
                 console.log(response);
                 $('.product-link').remove();
                 Zalando.getSingleElement(response);
+                Filter.init(response)
             },
             error: function () {
                 alert("Error getting data")

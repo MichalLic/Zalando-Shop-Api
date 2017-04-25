@@ -17,7 +17,7 @@
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
         </div>
-        <div class="category-section">
+        <nav class="category-section">
             <div class="category-block flex-between">
                 <div class="category-option">
                     <a href="#" class="category-link" data-gender="male">Men</a>
@@ -29,15 +29,17 @@
                     <a href="#" class="category-link" data-ageGroup="kids">Kids</a>
                 </div>
             </div>
-        </div>
+            <div class="filter-block">
+                <label for="filter-input">Search</label>
+                <input id="filter-input" type="text">
+            </div>
+        </nav>
     </div>
 </header>
 
 <main>
     <div class="container">
-        <div class="products-section">
-
-        </div>
+        <div class="products-section"></div>
     </div>
 </main>
 
@@ -73,6 +75,14 @@
         </div>
     </div>
 </footer>
+<script id="filter-product" type="x-tmpl-mustache">
+    <a href="product.html#{{id}}" data-id='{{id}}' class="filter-item">
+        <div class="product-item">
+          <p class="product-name">{{name}}</p>
+          <img src="{{media.images.0.smallHdUrl}}"></img>
+        </div>
+    </a>
+</script>
 <script id="products" type="x-tmpl-mustache">
     <a href="product.html#{{id}}" data-id='{{id}}' class="product-link">
         <div class="product-item">
@@ -82,7 +92,6 @@
             <p class="product-price">{{units.0.price.formatted}}</p>
         </div>
     </a>
-
 </script>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
